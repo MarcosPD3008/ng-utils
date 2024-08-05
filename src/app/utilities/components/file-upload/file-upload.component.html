@@ -1,0 +1,21 @@
+<div
+  class="file-upload"
+  [class.dragging]="isDragging"
+  (dragover)="onDragOver($event)"
+  (dragleave)="onDragLeave($event)"
+  (drop)="onDrop($event)"
+  (click)="onClick()">
+  <p>Drag and drop files here, or click to select files.</p>
+  <input #fileInput type="file" [accept]="accept" [multiple]="multiple" (change)="onFilesSelected($event)" style="display: none;" />
+</div>
+
+<div class="tag-container">
+  <ul class="badge-container">
+    <li *ngFor="let file of files">
+      <span class="badge">
+        {{ file.name }}
+        <span class="badge-close" (click)="onRemoveFile(file)">&times;</span>
+      </span>
+    </li>
+  </ul>
+</div>

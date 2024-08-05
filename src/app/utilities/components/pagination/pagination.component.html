@@ -1,0 +1,36 @@
+<div class="pagination-container">
+    <p>
+      Pagina {{ currentPage }} de {{ totalPages }}
+    </p>
+  
+    <ul class="pagination-list">
+      <li class="pagination-list-item"
+          (click)="goToPreviousPage()"
+          [class.disabled]="currentPage === 1">
+        <a class="fs-larger">
+          <span>&#8249;</span>
+        </a>
+      </li>
+  
+      <li *ngFor="let page of pagesArr | slice: sliceStart : sliceEnd"
+          (click)="goToPage(page)"
+          [ngClass]="{ 'active': currentPage === page }">
+        <a>
+          {{ page }}
+        </a>
+      </li>
+  
+      <li class="pagination-list-item"
+          (click)="goToNextPage()"
+          [class.disabled]="currentPage === totalPages">
+        <a class="fs-larger">
+          <span>&#8250;</span>
+        </a>
+      </li>
+    </ul>
+  
+    <p>
+      Mostrando {{ showingNumber }} elemento(s) de {{ total }}
+    </p>
+  </div>
+  
